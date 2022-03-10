@@ -12,7 +12,7 @@ require (
 	github.com/dustin/go-humanize v1.0.1-0.20200219035652-afde56e7acac
 	github.com/fsnotify/fsnotify v1.5.1 // indirect
 	github.com/go-chi/chi v4.1.2+incompatible
-	github.com/google/cel-go v0.7.3
+	github.com/google/cel-go v0.11.0-pre
 	github.com/google/uuid v1.3.0
 	github.com/klauspost/compress v1.15.0
 	github.com/klauspost/cpuid/v2 v2.0.11
@@ -36,7 +36,7 @@ require (
 	golang.org/x/crypto v0.0.0-20211215153901-e495a2d5b3d3
 	golang.org/x/net v0.0.0-20220114011407-0dd24b26b47d
 	golang.org/x/term v0.0.0-20210927222741-03fcf44c2211
-	google.golang.org/genproto v0.0.0-20220118154757-00ab72f36ad5
+	google.golang.org/genproto v0.0.0-20220310185008-1973136f34c6
 	google.golang.org/protobuf v1.27.1
 	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect
 	gopkg.in/natefinch/lumberjack.v2 v2.0.0
