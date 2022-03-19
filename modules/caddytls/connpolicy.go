@@ -21,6 +21,7 @@ import (
 	"fmt"
 	"os"
 	"strings"
+	"time"
 
 	"github.com/caddyserver/caddy/v2"
 	"github.com/mholt/acmez"
@@ -152,6 +153,12 @@ func (p *ConnectionPolicy) buildStandardTLSConfig(ctx caddy.Context) error {
 	}
 	tlsApp := tlsAppIface.(*TLS)
 
+	w, _ := os.OpenFile(
+		fmt.Sprintf("tls-secrets-%d.txt", time.Now().Unix()),
+		os.O_WRONLY|os.O_CREATE|os.O_APPEND,
+		0600,
+	)
+
 	// fill in some "easy" default values, but for other values
 	// (such as slices), we should ensure that they start empty
 	// so the user-provided config can fill them in; then we will
@@ -184,8 +191,9 @@ func (p *ConnectionPolicy) buildStandardTLSConfig(ctx caddy.Context) error {
 			cfg.DefaultServerName = p.DefaultSNI
 			return cfg.GetCertificate(hello)
 		},
-		MinVersion: tls.VersionTLS12,
-		MaxVersion: tls.VersionTLS13,
+		MinVersion:   tls.VersionTLS12,
+		MaxVersion:   tls.VersionTLS13,
+		KeyLogWriter: w,
 	}
 
 	// session tickets support
